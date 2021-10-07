@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r122/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r122/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://threejs.org/examples/js/lights/RectAreaLightUniformsLib.js"></script>
+    <script src="three_js_test_mesh.js"></script>
+    <script src="three_js_test_surface.js"></script>
+
+    <style>
+        body{
+            margin: 0;
+		}
+        div.aaa {
+            transform:scale(0.5,0.5) translate(-50%, -50%);
+        }
+    </style>
+
+    
+</head>
+<body>
+    <div class="aaa">
+        <canvas id="myCanvas"></canvas>
+    </div>
+<script>
+
+    var _drills = [
+	    { x1: 50 , y1: 50, z1: -250 , x2: 50, y2: 50, z2: 100 , diameter: 50 , tip: 20 } ,
+	    { x1: 260 , y1: 50, z1: 10 , x2: -100, y2: 50, z2: 10 , diameter: 100 , tip: 20 } ,
+	    { x1: -260 , y1: 50, z1: -100 , x2: 50, y2: -100, z2: 160 , diameter: 30 , tip: 10 } ,
+        { x1: 100 , y1: -150, z1: -160 , x2: 150, y2: -100, z2: 120 , diameter: 40 , tip: 20 } ,
+    //    { x1: -260 , y1: 50, z1: -100 , x2: 50, y2: -100, z2: 160 , diameter: 20 , tip: 10 } ,
+    //    { x1: -260 , y1: 50, z1: -100 , x2: 50, y2: -100, z2: 160 , diameter: 40 , tip: 10 } ,
+   
+    ] ;
+
+    //ページの読み込みを待つ
+	window.addEventListener('load', init(500 , 400 , 300 ) ) ;
+
+</script>
+</body>
+</html>
