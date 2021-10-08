@@ -183,22 +183,28 @@ function init( width , height , depth )
 
 	resultMesh.material.shading = THREE.FlatShading;
 //	resultMesh.material.shading = THREE.SmoothShading ;
-//	resultMesh.material.opacity = 0.25 ;
-//	resultMesh.material.transparent = true ;
+	resultMesh.material.opacity = 0.5 ;
+	resultMesh.material.transparent = true ;
 //	resultMesh.material.wireframe  = true ;
+//	resultMesh.material.depthTest = false ;
+//	const plane = new THREE.Plane(new THREE.Vector3(0, 0, -1), - (depth /4) );
+//	resultMesh.material.clippingPlanes = [
+//			new THREE.Plane(new THREE.Vector3(0, 0, -1), Math.ceil(depth / 10)+1 ) ];
 
-    resultMesh.geometry.computeFaceNormals();
+	resultMesh.geometry.computeFaceNormals();
     resultMesh.geometry.computeVertexNormals();
     resultMesh.material.needsUpdate = true;
     resultMesh.geometry.buffersNeedUpdate = true;
     resultMesh.geometry.uvsNeedUpdate = true;
-/*	
+	
+	
 	const edges = new THREE.LineSegments(
-		new THREE.EdgesGeometry( resultMesh.geometry ) ,
+		new THREE.EdgesGeometry( resultMesh.geometry , 1 ) ,
 		new THREE.LineBasicMaterial( { color: 0xFFFFFF } ) 
 	) ;
 	resultMesh.add ( edges ) ;
-*/	
+	
+
 	scene.add(resultMesh);
 //	scene.add(edges);
 
@@ -235,6 +241,7 @@ function init( width , height , depth )
 	renderer.setPixelRatio(window.devicePixelRatio);
 	renderer.setSize((width*2 + depth*2)+viewport3D.width, height + depth*2);
 	renderer.autoClear = false ;
+	renderer.localClippingEnabled = true;
 
 	//	クリッピング平面
 	renderer.clippingPlanes.push(new THREE.Plane(new THREE.Vector3(-1, 0, 0), Math.ceil(width / 2)+1 ) ) ;
@@ -243,6 +250,8 @@ function init( width , height , depth )
 	renderer.clippingPlanes.push(new THREE.Plane(new THREE.Vector3(0, 1, 0), Math.ceil(height / 2)+1 ) ) ;
 	renderer.clippingPlanes.push(new THREE.Plane(new THREE.Vector3(0, 0, -1), Math.ceil(depth / 2)+1 ) ) ;
 	renderer.clippingPlanes.push(new THREE.Plane(new THREE.Vector3(0, 0, 1), Math.ceil(depth / 2)+1 ) ) ;
+
+	const controls = new THREE.OrbitControls(camera3D , document.querySelector('#myCanvas') );
 
 	//	初回実行
 	tick();
@@ -259,6 +268,7 @@ function init( width , height , depth )
 							  viewport3D.width , viewport3D.height );
 		renderer.render(scene, camera3D) ;
 		
+		controls.update();
 		requestAnimationFrame(tick);
 
 		//アニメーション処理をここに書く
