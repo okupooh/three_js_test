@@ -64,7 +64,7 @@ function getDrillMeshLathe( start , end , diameter ,tip)
 		new THREE.Vector3( 0 , - (dep /2 ) , 0)
 	];
 	
-	const geo = new THREE.LatheGeometry(points, 12) ;  // pointsで指定した図形を12段階で回転体化
+	const geo = new THREE.LatheGeometry(points, 24) ;  // pointsで指定した図形を12段階で回転体化
 	const mat = new THREE.MeshNormalMaterial({
 		//	side : THREE.BackSide,
 			side : THREE.DoubleSide,
