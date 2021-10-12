@@ -1,4 +1,8 @@
 /*
+ *	threebsp_js_test_mesh_union.js
+ */
+
+/*
  *	箱 mesh を作成
  */
 function getBoxMesh( wid , hei , dep )

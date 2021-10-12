@@ -1,4 +1,8 @@
 /*
+ *	threebsp_js_test_surface_union.js
+ */
+
+/*
  * 展開図の面番号と位置：
  *    2
  *  5 0 4 1 
